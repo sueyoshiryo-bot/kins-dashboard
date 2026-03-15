@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "1.0",
+    "last_id": 3,
+    "description": "KINS タスク管理データ。kins-hqエージェント群と連携。"
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "title": "SG Clinic 2号院の物件候補リスト作成",
+      "business": "clinic-sg",
+      "agent": "cos",
+      "priority": "high",
+      "status": "in-progress",
+      "due_date": "2026-03-18",
+      "think_level": "実行",
+      "delegatable": "partial",
+      "output_type": "document",
+      "notes": "Orchard Road周辺で3件以上。賃料・面積・契約条件を比較表にまとめる。",
+      "created_at": "2026-03-15T10:00:00",
+      "updated_at": "2026-03-15T10:00:00"
+    },
+    {
+      "id": 2,
+      "title": "PRIME SG 4月キャンペーン企画",
+      "business": "prime",
+      "agent": "cmo",
+      "priority": "medium",
+      "status": "todo",
+      "due_date": "2026-03-20",
+      "think_level": "戦略",
+      "delegatable": "no",
+      "output_type": "document",
+      "notes": "WhatsApp経由の紹介プログラムと連動させる。LTV優先の原則を守ること。",
+      "created_at": "2026-03-15T10:00:00",
+      "updated_at": "2026-03-15T10:00:00"
+    },
+    {
+      "id": 3,
+      "title": "FY26 Q1 海外事業レポート作成",
+      "business": "overseas",
+      "agent": "cfo",
+      "priority": "high",
+      "status": "todo",
+      "due_date": "2026-03-15",
+      "think_level": "確認",
+      "delegatable": "yes",
+      "output_type": "document",
+      "notes": "投資家向け。SG Clinic黒字化の数値を含める。エビデンスベースで。",
+      "created_at": "2026-03-15T10:00:00",
+      "updated_at": "2026-03-15T10:00:00"
+    }
+  ]
+}
