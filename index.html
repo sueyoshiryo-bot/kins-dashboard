@@ -64,6 +64,19 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
 .sidebar-stat strong { color: #0984e3; }
 .focus-box { background: #f8f9fa; border-radius: 8px; padding: 12px; font-size: 0.85rem; color: #2d3436; border-left: 3px solid #0984e3; }
 
+/* プロジェクト進捗 */
+.project-progress-section { margin-bottom: 20px; }
+.project-progress-section h2 { font-size: 1.1rem; margin-bottom: 12px; color: #2d3436; }
+.project-card { background: #fff; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #6c5ce7; }
+.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.project-title { font-weight: 600; font-size: 0.95rem; }
+.progress-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.progress-bar-bg { flex: 1; height: 18px; background: #f0f0f0; border-radius: 9px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, #6c5ce7, #a29bfe); border-radius: 9px; transition: width 0.3s; }
+.progress-label { font-size: 0.8rem; color: #636e72; white-space: nowrap; }
+.project-meta { font-size: 0.78rem; color: #636e72; }
+.project-tag { background: #f0e6ff; color: #6c5ce7; }
+
 /* レスポンシブ */
 @media (max-width: 768px) {
     .summary { grid-template-columns: repeat(2, 1fr); }
@@ -77,21 +90,25 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
 <body>
 <div class="container">
     <h1>KINS タスクダッシュボード</h1>
-    <div class="updated">最終更新: 2026-03-15 23:16</div>
+    <div class="updated">最終更新: 2026-03-16 10:02</div>
 
     
+        <div class="overdue-banner">
+            ⚠ 期限切れタスクが 1件 あります（overseas）
+        </div>
+        
 
     <div class="summary">
         <div class="summary-card">
-            <div class="num">3</div>
+            <div class="num">8</div>
             <div class="label">全タスク</div>
         </div>
         <div class="summary-card">
             <div class="num">1</div>
-            <div class="label">進行中（今日期限: 1件）</div>
+            <div class="label">進行中（今日期限: 0件）</div>
         </div>
-        <div class="summary-card ">
-            <div class="num">0</div>
+        <div class="summary-card alert">
+            <div class="num">1</div>
             <div class="label">期限切れ</div>
         </div>
         <div class="summary-card">
@@ -105,6 +122,27 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
         <button class="filter-btn" onclick="filterTasks('clinic-sg')">clinic-sg</button><button class="filter-btn" onclick="filterTasks('prime')">prime</button><button class="filter-btn" onclick="filterTasks('with')">with</button><button class="filter-btn" onclick="filterTasks('overseas')">overseas</button><button class="filter-btn" onclick="filterTasks('company-wide')">company-wide</button>
     </div>
 
+    
+    <div class="project-progress-section">
+        <h2>プロジェクト進捗</h2>
+        
+        <div class="project-card" data-business="prime">
+            <div class="project-header">
+                <span class="project-title">PRIME SG 新パッケージローンチ</span>
+                <span class="badge business-tag">prime</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width:0%"></div>
+                </div>
+                <span class="progress-label">0%（0/5件）</span>
+            </div>
+            <div class="project-meta">期限: 2026-04-15</div>
+        </div>
+        
+    </div>
+    
+
     <div class="main-layout">
         <div class="task-list">
             
@@ -116,6 +154,7 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
             <div class="task-meta">
                 <span class="badge business-tag">clinic-sg</span>
                 <span class="badge status-in-progress">進行中</span>
+                
                 <span class="due-date ">期限: 2026-03-18</span>
             </div>
             <div class="task-detail">
@@ -126,7 +165,7 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
             <div class="task-notes">Orchard Road周辺で3件以上。賃料・面積・契約条件を比較表にまとめる。</div>
         </div>
         
-        <div class="task-card " data-business="overseas">
+        <div class="task-card overdue" data-business="overseas">
             <div class="task-header">
                 <span class="task-title">FY26 Q1 海外事業レポート作成</span>
                 <span class="badge priority-high">HIGH</span>
@@ -134,7 +173,8 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
             <div class="task-meta">
                 <span class="badge business-tag">overseas</span>
                 <span class="badge status-todo">未着手</span>
-                <span class="due-date ">期限: 2026-03-15</span>
+                
+                <span class="due-date overdue">期限: 2026-03-15</span>
             </div>
             <div class="task-detail">
                 <span>担当: cfo</span>
@@ -146,12 +186,51 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
         
         <div class="task-card " data-business="prime">
             <div class="task-header">
+                <span class="task-title">PRIME SG 新パッケージローンチ：現状調査・情報収集</span>
+                <span class="badge priority-high">HIGH</span>
+            </div>
+            <div class="task-meta">
+                <span class="badge business-tag">prime</span>
+                <span class="badge status-todo">未着手</span>
+                <span class="badge project-tag">PRIME SG 新パッケージローンチ</span>
+                <span class="due-date ">期限: 2026-03-23</span>
+            </div>
+            <div class="task-detail">
+                <span>担当: none</span>
+                <span>思考: 実行</span>
+                <span>委譲: no</span>
+            </div>
+            
+        </div>
+        
+        <div class="task-card " data-business="prime">
+            <div class="task-header">
+                <span class="task-title">PRIME SG 新パッケージローンチ：方針策定・計画書作成</span>
+                <span class="badge priority-high">HIGH</span>
+            </div>
+            <div class="task-meta">
+                <span class="badge business-tag">prime</span>
+                <span class="badge status-todo">未着手</span>
+                <span class="badge project-tag">PRIME SG 新パッケージローンチ</span>
+                <span class="due-date ">期限: 2026-03-30</span>
+            </div>
+            <div class="task-detail">
+                <span>担当: none</span>
+                <span>思考: 実行</span>
+                <span>委譲: no</span>
+            </div>
+            
+        </div>
+        
+        <div class="task-card " data-business="prime">
+            <div class="task-header">
                 <span class="task-title">PRIME SG 4月キャンペーン企画</span>
                 <span class="badge priority-medium">MEDIUM</span>
             </div>
             <div class="task-meta">
                 <span class="badge business-tag">prime</span>
                 <span class="badge status-todo">未着手</span>
+                
                 <span class="due-date ">期限: 2026-03-20</span>
             </div>
             <div class="task-detail">
@@ -162,6 +241,63 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
             <div class="task-notes">WhatsApp経由の紹介プログラムと連動させる。LTV優先の原則を守ること。</div>
         </div>
         
+        <div class="task-card " data-business="prime">
+            <div class="task-header">
+                <span class="task-title">PRIME SG 新パッケージローンチ：関係者との合意形成・承認取得</span>
+                <span class="badge priority-medium">MEDIUM</span>
+            </div>
+            <div class="task-meta">
+                <span class="badge business-tag">prime</span>
+                <span class="badge status-todo">未着手</span>
+                <span class="badge project-tag">PRIME SG 新パッケージローンチ</span>
+                <span class="due-date ">期限: 2026-04-06</span>
+            </div>
+            <div class="task-detail">
+                <span>担当: none</span>
+                <span>思考: 実行</span>
+                <span>委譲: no</span>
+            </div>
+            
+        </div>
+        
+        <div class="task-card " data-business="prime">
+            <div class="task-header">
+                <span class="task-title">PRIME SG 新パッケージローンチ：実行・実装</span>
+                <span class="badge priority-medium">MEDIUM</span>
+            </div>
+            <div class="task-meta">
+                <span class="badge business-tag">prime</span>
+                <span class="badge status-todo">未着手</span>
+                <span class="badge project-tag">PRIME SG 新パッケージローンチ</span>
+                <span class="due-date ">期限: 2026-04-13</span>
+            </div>
+            <div class="task-detail">
+                <span>担当: none</span>
+                <span>思考: 実行</span>
+                <span>委譲: no</span>
+            </div>
+            
+        </div>
+        
+        <div class="task-card " data-business="prime">
+            <div class="task-header">
+                <span class="task-title">PRIME SG 新パッケージローンチ：結果確認・レビュー</span>
+                <span class="badge priority-low">LOW</span>
+            </div>
+            <div class="task-meta">
+                <span class="badge business-tag">prime</span>
+                <span class="badge status-todo">未着手</span>
+                <span class="badge project-tag">PRIME SG 新パッケージローンチ</span>
+                <span class="due-date ">期限: 2026-04-15</span>
+            </div>
+            <div class="task-detail">
+                <span>担当: none</span>
+                <span>思考: 実行</span>
+                <span>委譲: no</span>
+            </div>
+            
+        </div>
+        
         </div>
         <div class="sidebar">
             <div class="sidebar-section">
@@ -169,14 +305,14 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
                 
         <div class="bar-row">
             <span class="bar-label">clinic-sg</span>
-            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:16%"></div></div>
             <span class="bar-count">1</span>
         </div>
         
         <div class="bar-row">
             <span class="bar-label">prime</span>
             <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
-            <span class="bar-count">1</span>
+            <span class="bar-count">6</span>
         </div>
         
         <div class="bar-row">
@@ -187,7 +323,7 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
         
         <div class="bar-row">
             <span class="bar-label">overseas</span>
-            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:16%"></div></div>
             <span class="bar-count">1</span>
         </div>
         
@@ -203,7 +339,7 @@ h1 { font-size: 1.4rem; padding: 16px 0 8px; color: #2d3436; }
             </div>
             <div class="sidebar-section">
                 <h3>今週のフォーカス</h3>
-                <div class="focus-box">順調です。今週も集中して進めましょう。</div>
+                <div class="focus-box">期限切れタスクがあります。早めに片付けましょう。</div>
             </div>
         </div>
     </div>
@@ -214,6 +350,13 @@ function filterTasks(business) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
     document.querySelectorAll('.task-card').forEach(card => {
+        if (business === 'all' || card.dataset.business === business) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    document.querySelectorAll('.project-card').forEach(card => {
         if (business === 'all' || card.dataset.business === business) {
             card.style.display = '';
         } else {
