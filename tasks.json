@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0",
-    "last_id": 3,
+    "last_id": 4,
     "description": "KINS タスク管理データ。kins-hqエージェント群と連携。"
   },
   "tasks": [
@@ -49,6 +49,21 @@
       "notes": "投資家向け。SG Clinic黒字化の数値を含める。エビデンスベースで。",
       "created_at": "2026-03-15T10:00:00",
       "updated_at": "2026-03-15T10:00:00"
+    },
+    {
+      "id": 4,
+      "title": "：タスクの追加：\nKINS Women Wellness Nightの参加者申し込み状況確認\n（締め切り：3月23月曜日）",
+      "business": "company-wide",
+      "agent": "none",
+      "priority": "medium",
+      "status": "todo",
+      "due_date": "2026-03-25",
+      "think_level": "実行",
+      "delegatable": "no",
+      "output_type": "other",
+      "notes": "",
+      "created_at": "2026-03-18T00:59:58",
+      "updated_at": "2026-03-18T00:59:58"
     }
   ]
 }
