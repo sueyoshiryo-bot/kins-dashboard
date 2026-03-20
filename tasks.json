@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0",
-    "last_id": 5,
+    "last_id": 6,
     "description": "KINS タスク管理データ。kins-hqエージェント群と連携。"
   },
   "tasks": [
@@ -79,6 +79,21 @@
       "notes": "",
       "created_at": "2026-03-20T04:12:46",
       "updated_at": "2026-03-20T04:12:46"
+    },
+    {
+      "id": 6,
+      "title": "：新しいタスクを追加してください。\n\n事業セグメントはシンガポールの KINS PRIME です。\n\nタスク内容：\n1. Ginza Premier への新しいインボイスの発行と領収書（二つに分けたもの）の発行\n\n締め切りは今日です。",
+      "business": "company-wide",
+      "agent": "none",
+      "priority": "medium",
+      "status": "todo",
+      "due_date": "2026-03-27",
+      "think_level": "実行",
+      "delegatable": "no",
+      "output_type": "other",
+      "notes": "",
+      "created_at": "2026-03-20T05:39:36",
+      "updated_at": "2026-03-20T05:39:36"
     }
   ]
 }
